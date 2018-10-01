@@ -26,7 +26,7 @@ bot.on('message', message =>{
 
             else{
 
-                message.channel.send("Hey, I only understand >bang right now. More will be added when my creator is free. :) ")
+                message.channel.send(sender + "Hey, I only understand >bang right now. More will be added when my creator is free. :) ")
 
             }
 
