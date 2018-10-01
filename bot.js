@@ -12,7 +12,7 @@ bot.on('message', message =>{
 
     var msg = message.content;
 
-    var prefix = "." //The text before commands, you can put anything that you prefer
+    var prefix = ">" //The text before commands, you can put anything that you prefer
 
     if(message.author.id != "482828147155402752" && message.channel.id === "496384836156653588"){
 
