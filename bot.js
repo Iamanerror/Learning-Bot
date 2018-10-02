@@ -4,22 +4,22 @@ var botName = require('./package.json');
 
 var bot = new Discord.Client();
 
-var servers = {};
 
-const YTDL = require("ytdl-core");
 
-function play(connection, message){
-    var server = servers[message.guild.id];
+
+
+
+
     
-    server.despatcher = connection.playStream(YTDL(server.queue[0],{filter: "audioonly"}));
+
     
-    server.queue.shift();
+
     
-    server.despatcher.on("end", function(){
-        if (server.queue[0]) play(connection, message);
-        else connection.disconnect();
-       });
-   } 
+
+
+
+
+
 
 bot.on('message', message =>{
 
@@ -49,33 +49,33 @@ bot.on('message', message =>{
 
         }
             
-           case "play":
-                 if (!args[1]) {
-                   message.channel.sendmessage("please provide a link");
-                   return;
-               } 
+
+
+
+
+
         
-                 if(!message.member.voiceChannel) {
-                     message.channel.sendmessage("you must be in a voice channel");
-               } 
+
+
+
         
-                if(!servers[message.guild.id]) server[message.guild.id]= {
-                    queue: [] 
-               };
+
+
+
         
-                var server = servers[message.guild.id];
+
         
-                server.queue.push(args[1]);
+
         
-                if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-                    play(connection, message);
+
+
                     
-              });
-              break;
-             case "skip":
-                  var server = servers[message.guild.id];
+
+
+
+
         
-                  if (server.despatcher) server.despatcher.end();
+
 
 
 
