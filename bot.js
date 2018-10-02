@@ -76,12 +76,12 @@ bot.on('message', message =>{
                   var server = servers[message.guild.id];
         
                   if (server.despatcher) server.despatcher.end();
-              break;
-            case "stop":
-                  var server = servers[message.guild.id];
+
+
+
         
-                  if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-              break;
+
+
         
         else{
 
