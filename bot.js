@@ -50,15 +50,15 @@ bot.on('message', message =>{
         }
             
 
-           else{
+        
              
-               if(msg === prefix + "bing" && message.channel.id === "496384836156653588"){
+
                    
-                   message.channel.send(sender + 'BOOM!!!') // Sends a message to the channel, with the content
+
                    
-              } 
+              
                
-         } 
+         
 
 
 
