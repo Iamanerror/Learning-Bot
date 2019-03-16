@@ -10,6 +10,7 @@ client.on("ready", () => {
 });
 
 client.on('guildMemberAdd', member => {
+    let embed = new Discord.RichEmbed()
    .setTitle("Member Joined!")
    .addField("Name:", member.user)
    .addField("User ID:", member.id)
@@ -20,6 +21,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on("guildMemberRemove", member => {
+    let embed = new Discord.RichEmbed()
    .setTitle("Member Left")
    .addField("Name:", member.user)
    .addField("User ID:", member.id)
