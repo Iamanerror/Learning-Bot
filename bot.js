@@ -1,106 +1,60 @@
-var Discord = require('discord.js');
+const { Discord, Client, RichEmbed, Attachment } = require("discord.js");
+const client = new Client({disableEveryone: true});
 
-var botName = require('./package.json');
+client.on("ready", () => {
 
-var bot = new Discord.Client();
+  console.log(`Logged in as ${client.user.username}!`);
 
-
-
-
-
-
-
-    
-
-    
-
-    
-
-
-
-
-
-
-bot.on('message', message =>{
-
-    // Variables
-
-    var sender = message.author; //The person who sent the message
-
-    var msg = message.content;
-
-    var prefix = ">" //The text before commands, you can put anything that you prefer
-
-    if(message.author.id != "482828147155402752" && message.channel.id === "496384836156653588"){
-
-        if(msg.startsWith('>', 0)){
-
-            if(msg === prefix + "ping" && message.channel.id === "496384836156653588"){
-
-                message.channel.send(sender + 'pong!!!!!') // Sends a message to the channel, with the content
-
-            }
-
-            else{
-
-                message.channel.send(sender + "Hey, I only understand >bang right now. More will be added when my creator is free. :) ")
-
-            }
-
-        }
-            
-
-        
-             
-
-                   
-
-                   
-              
-               
-         
-
-
-
-        
-
-
-
-        
-
-
-
-        
-
-        
-
-        
-
-
-                    
-
-
-
-
-        
-
-
-
-
-        
-
-
-        
-        else{
-
-            message.delete();
-
-            message.channel.send(sender + " this bot only accepts commands which starts with '>' dot.");
-
-        }
-
-    }
+  client.user.setActivity('YouTube', { type: "WATCHING" })
 
 });
 
-bot.login(process.env.BOT_TOKEN)
+client.on('guildMemberAdd', member => {
+   .setTitle("Member Joined!")
+   .addField("Name:", member.user)
+   .addField("User ID:", member.id)
+   .addField("Member Count:", message.memberCount)
+   .setColor(0x0463ff)
+
+  member.guild.channels.get('482494267005337601').send(embed); 
+});
+
+client.on("guildMemberRemove", member => {
+   .setTitle("Member Left")
+   .addField("Name:", member.user)
+   .addField("User ID:", member.id)
+   .addField("Member Count:", message.guild.memberCount)
+   .setColor(0x0463ff)
+
+  member.guild.channels.get('482494267005337601').send(embed); 
+});
+
+
+client.on("message", async message => {
+    
+    let prefix = ">";
+
+const args = message.content.slice(prefix.length).trim().split(/\s+/g);
+
+const command = args.shift().toLowerCase();
+    
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+
+
+if(command === 'ping') {
+
+message.channel.send(`Hoold on!`).then(m => {
+
+    m.edit(`🏓  ::  **Pong!** (Roundtrip took: **` + (m.createdTimestamp - message.createdTimestamp) + `ms.** Heartbeat: **` + Math.round(client.ping) + `ms.**)`);
+
+    });
+
+ }
+
+});    
+
+
+        
+      
+client.login(process.env.BOT_TOKEN)
